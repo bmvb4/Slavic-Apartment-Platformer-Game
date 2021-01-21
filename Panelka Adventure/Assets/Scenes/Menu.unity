@@ -2335,6 +2335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1359498789}
+  - component: {fileID: 1359498790}
   m_Layer: 0
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -2357,6 +2358,18 @@ Transform:
   m_Father: {fileID: 1344836504}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1359498790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359498788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4cc9db58ceea946a469f52d8ccaad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1489246552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,6 +2380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1489246553}
   - component: {fileID: 1489246554}
+  - component: {fileID: 1489246555}
   m_Layer: 5
   m_Name: volumeSlider
   m_TagString: Untagged
@@ -2439,13 +2453,37 @@ MonoBehaviour:
   m_FillRect: {fileID: 1354913572}
   m_HandleRect: {fileID: 810375338}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1489246555}
+        m_MethodName: SetLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1489246555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489246552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f2122010b54b24bb713a843db77aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 5a44ba3b923ebbd4f90cd7c947d19286, type: 2}
 --- !u!1 &1686035434
 GameObject:
   m_ObjectHideFlags: 0
