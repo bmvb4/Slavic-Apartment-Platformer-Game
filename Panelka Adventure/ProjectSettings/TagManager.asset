@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Wallpaper
+  - Grab
   layers:
   - Default
   - TransparentFX
@@ -41,4 +43,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Wallpaper
+    uniqueID: 3360737579
+    locked: 0
+  - name: Floor
+    uniqueID: 112784637
+    locked: 0
+  - name: Object
+    uniqueID: 389227505
+    locked: 0
+  - name: Movable Object
+    uniqueID: 3190924383
+    locked: 0
+  - name: Player
+    uniqueID: 4252611355
     locked: 0

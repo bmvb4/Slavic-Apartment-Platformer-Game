@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float speed;      
+    public float speed;
 
     private Rigidbody2D rb2d;
 
     private SpriteRenderer SR;
 
     private Animator anim;
-    float moveHorizontal = 0f;
-    private bool IsFacingRight = true;
+    private float moveHorizontal = 0f;
     // Use this for initialization
     void Start()
     {
@@ -26,29 +25,42 @@ public class PlayerScript : MonoBehaviour
     {
 
         moveHorizontal = Input.GetAxisRaw("Horizontal") * speed;
-        if(Mathf.Abs(moveHorizontal) > 0 && rb2d.velocity.y==0)
+        if (Mathf.Abs(moveHorizontal) > 0 && rb2d.velocity.y == 0)
             anim.SetBool("IsWalking", true);
         else
             anim.SetBool("IsWalking", false);
 
-        if (Input.GetKeyDown(KeyCode.Space) && rb2d.velocity.y==0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && rb2d.velocity.y == 0)
         {
             rb2d.AddForce(Vector2.up * 350);
         }
 
-    //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
+        if (rb2d.velocity.y == 0)
+        {
+            anim.SetBool("IsJumping", false);
+            anim.SetBool("IsFalling", false);
+        }
+        if (rb2d.velocity.y > 0)
+            anim.SetBool("IsJumping", true);
+
+        if (rb2d.velocity.y < 0)
+        {
+            anim.SetBool("IsJumping", false);
+            anim.SetBool("IsFalling", true);
+        }
+
+        //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     }
     void FixedUpdate()
     {
         rb2d.velocity = new Vector2(moveHorizontal, rb2d.velocity.y);
-    
     }
 
     private void LateUpdate()
     {
-        if(moveHorizontal > 0)
-            SR.flipX = false;
-        else if(moveHorizontal < 0)
-            SR.flipX = true;
+        if (moveHorizontal > 0)
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        else if (moveHorizontal < 0)
+            transform.eulerAngles = new Vector3(0, 180, 0);
     }
 }
