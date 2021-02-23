@@ -9,34 +9,39 @@ public class GrabScript : MonoBehaviour
     public float rayDist;
     [Header("Info")]
     public Collider2D Item;
+    RaycastHit2D grabCheck;
     public bool isGrab = false;
 
     void Update()
     {
-        bool flag=false;
-        RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right*transform.localScale.x, rayDist);
-        Item = grabCheck.collider;
-        if (grabCheck.collider != null && grabCheck.collider.tag == "Grab")
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            
-            if (Input.GetKeyDown(KeyCode.Space) && !flag){
-                isGrab = !isGrab;
-                flag = true;
+            if (!isGrab)
+            {
+                grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale.x, rayDist);
+                Item = grabCheck.collider;
+                if (grabCheck.collider != null && grabCheck.collider.tag == "Grab")
+                {
+                    isGrab = true;
+                }
+
             }
-            if(Input.GetKeyUp(KeyCode.Space) && flag)
-                    flag = false;
+            else
+            {
+                isGrab = false;
+                grabCheck.collider.gameObject.transform.parent = null;
+                grabCheck.collider.gameObject.AddComponent<Rigidbody2D>();
+                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
+                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().mass = 100;
+            }
         }
         if (isGrab == true)
-            {
-                grabCheck.collider.gameObject.transform.parent = holder;
-                grabCheck.collider.gameObject.transform.position = holder.position;
-               grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-            }else{
-                if(grabCheck.collider != null){
-                    grabCheck.collider.gameObject.transform.parent = null;
-                    grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-                }
-                
-            }
+        {
+            grabCheck.collider.gameObject.transform.parent = holder;
+            grabCheck.collider.gameObject.transform.position = holder.position;
+            Destroy(grabCheck.collider.gameObject.GetComponent<Rigidbody2D>());
+        }
+
     }
 }
