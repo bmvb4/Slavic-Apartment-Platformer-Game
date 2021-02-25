@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GrabScript : MonoBehaviour
 {
+    public bool isDoorButton = false;
+    public bool isKey = false;
     public Transform grabDetect;
     public Transform holder;
     public float rayDist;
@@ -22,10 +24,13 @@ public class GrabScript : MonoBehaviour
                 grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale.x, rayDist);
                 Item = grabCheck.collider;
                 if (grabCheck.collider != null && grabCheck.collider.tag == "Grab")
-                {
                     isGrab = true;
+                if (grabCheck.collider != null && grabCheck.collider.tag == "DoorButton")
+                    isDoorButton = true;
+                if (grabCheck.collider != null && grabCheck.collider.tag == "Key"){
+                    Destroy(grabCheck.collider.gameObject);
+                    isKey = true;
                 }
-
             }
             else
             {

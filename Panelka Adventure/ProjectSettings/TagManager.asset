@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Wallpaper
   - Grab
+  - DoorButton
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX
