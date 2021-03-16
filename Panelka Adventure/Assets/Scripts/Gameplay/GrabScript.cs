@@ -5,13 +5,14 @@ using UnityEngine;
 public class GrabScript : MonoBehaviour
 {
     public bool isDoorButton = false;
-    public bool isKey = false;
+    private bool isKey = false;
     public Transform grabDetect;
     public Transform holder;
     public float rayDist;
     [Header("Info")]
     public Collider2D Item;
-    RaycastHit2D grabCheck;
+    public Collider2D DOOOR;
+    private GameObject grabCheck;
     public bool isGrab = false;
 
     void Update()
@@ -21,32 +22,65 @@ public class GrabScript : MonoBehaviour
         {
             if (!isGrab)
             {
-                grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale.x, rayDist);
-                Item = grabCheck.collider;
-                if (grabCheck.collider != null && grabCheck.collider.tag == "Grab")
+                if (grabCheck != null && grabCheck.tag == "Grab")
                     isGrab = true;
-                if (grabCheck.collider != null && grabCheck.collider.tag == "DoorButton")
+                if (grabCheck != null && grabCheck.tag == "DoorButton")
                     isDoorButton = true;
-                if (grabCheck.collider != null && grabCheck.collider.tag == "Key"){
-                    Destroy(grabCheck.collider.gameObject);
+                if (grabCheck != null && grabCheck.tag == "Key")
+                {
+                    isGrab = true;
                     isKey = true;
                 }
             }
             else
             {
-                isGrab = false;
-                grabCheck.collider.gameObject.transform.parent = null;
-                grabCheck.collider.gameObject.AddComponent<Rigidbody2D>();
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().mass = 100;
+                if (isKey)
+                {
+                    //
+                }
+                else
+                {
+                    isGrab = false;
+                    grabCheck.gameObject.transform.parent = null;
+                    grabCheck.gameObject.AddComponent<Rigidbody2D>();
+                    grabCheck.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
+                    grabCheck.gameObject.GetComponent<Rigidbody2D>().mass = 100;
+                }
+
             }
         }
         if (isGrab == true)
         {
-            grabCheck.collider.gameObject.transform.parent = holder;
-            grabCheck.collider.gameObject.transform.position = holder.position;
-            Destroy(grabCheck.collider.gameObject.GetComponent<Rigidbody2D>());
+            grabCheck.gameObject.transform.parent = holder;
+            grabCheck.gameObject.transform.position = holder.position;
+            if (!isKey)
+                Destroy(grabCheck.gameObject.GetComponent<Rigidbody2D>());
         }
 
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        print("TriggerEnter: " + other.gameObject);
+        if(!isGrab)
+            grabCheck = other.gameObject;
+        if (isKey)
+        {
+            if (other.gameObject.tag == "Door")
+            {
+                isDoorButton = true;
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                isGrab = false;
+                isKey = false;
+                Destroy(grabCheck.gameObject);
+            }
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(!isGrab)
+            grabCheck = other.gameObject;
     }
 }

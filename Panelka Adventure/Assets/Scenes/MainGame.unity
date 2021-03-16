@@ -378,8 +378,9 @@ MonoBehaviour:
   isKey: 0
   grabDetect: {fileID: 2114607599}
   holder: {fileID: 12710574}
-  rayDist: 2
+  rayDist: 1
   Item: {fileID: 0}
+  DOOOR: {fileID: 0}
   isGrab: 0
 --- !u!61 &258148064
 BoxCollider2D:
@@ -1620,8 +1621,9 @@ GameObject:
   - component: {fileID: 1425313721}
   - component: {fileID: 1425313722}
   - component: {fileID: 1425313724}
-  - component: {fileID: 1425313723}
   - component: {fileID: 1425313725}
+  - component: {fileID: 1425313723}
+  - component: {fileID: 1425313726}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -1706,9 +1708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocked: 1
-  isKey: 1
   isButton: 1
-  keyItem: {fileID: 550873237}
   buttonItem: {fileID: 1425313720}
 --- !u!61 &1425313724
 BoxCollider2D:
@@ -1762,6 +1762,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.76}
   m_EdgeRadius: 0
+--- !u!95 &1425313726
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425313720}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b02cb02b20fa57b418bbdea8b0044de7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1633463860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,7 +1892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680822270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.68, y: -1.04, z: 0}
+  m_LocalPosition: {x: 4.12, y: -1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1896,7 +1915,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.18}
+    oldSize: {x: 0.32, y: 0.24}
     newSize: {x: 0.26, y: 0.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1981,8 +2000,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -42355941
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 6377427098070296224, guid: 226054e2c4ed42e459611d3a20ad9143,
     type: 3}
@@ -2003,7 +2022,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680822270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 068c853790f079949851b4b7ca417f69, type: 3}
   m_Name: 
@@ -2016,7 +2035,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680822270}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d9b1ebd1e9f81e43aa4a9c89f2c6e06, type: 3}
   m_Name: 
@@ -2045,7 +2064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1741775284
 Animator:
   serializedVersion: 3
@@ -2124,7 +2143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741775283}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -1.01, z: 0}
+  m_LocalPosition: {x: 3.21, y: -1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2168,14 +2187,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.34, y: 0.36}
+    oldSize: {x: 0.34, y: 0.28}
     newSize: {x: 0.34, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34, y: 0.36}
+  m_Size: {x: 0.34, y: 0.28}
   m_EdgeRadius: 0
 --- !u!114 &1741775289
 MonoBehaviour:
@@ -2184,7 +2203,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741775283}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 068c853790f079949851b4b7ca417f69, type: 3}
   m_Name: 
@@ -2197,7 +2216,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741775283}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d9b1ebd1e9f81e43aa4a9c89f2c6e06, type: 3}
   m_Name: 
