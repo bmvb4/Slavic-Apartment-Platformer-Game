@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GrabScript : MonoBehaviour
 {
-    public bool isDoorButton = false;
     private bool isKey = false;
     public Transform grabDetect;
     public Transform holder;
@@ -24,8 +23,6 @@ public class GrabScript : MonoBehaviour
             {
                 if (grabCheck != null && grabCheck.tag == "Grab")
                     isGrab = true;
-                if (grabCheck != null && grabCheck.tag == "DoorButton")
-                    isDoorButton = true;
                 if (grabCheck != null && grabCheck.tag == "Key")
                 {
                     isGrab = true;
@@ -61,15 +58,14 @@ public class GrabScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("TriggerEnter: " + other.gameObject);
+        //print("TriggerEnter: " + other.gameObject);
         if(!isGrab)
             grabCheck = other.gameObject;
         if (isKey)
         {
             if (other.gameObject.tag == "Door")
             {
-                isDoorButton = true;
-                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                other.gameObject.GetComponent<DoorScript>().Unlock();
                 isGrab = false;
                 isKey = false;
                 Destroy(grabCheck.gameObject);
@@ -78,9 +74,20 @@ public class GrabScript : MonoBehaviour
 
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+         if(!isGrab)
+            grabCheck = null;
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(!isGrab)
             grabCheck = other.gameObject;
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+         if(!isGrab)
+            grabCheck = null;
     }
 }

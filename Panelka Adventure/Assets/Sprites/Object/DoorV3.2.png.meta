@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ea8d11f9cb884044ab808c097113f2a3
+guid: 969e15898bd19af4b89dd9efccda4fd0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4856990145134343996
-    second: DoorOpen_0
+      213: 1454249642774420913
+    second: DoorV3.2_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +67,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -79,7 +79,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -91,7 +91,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,22 +102,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DoorOpen_0
+      name: DoorV3.2_0
       rect:
         serializedVersion: 2
-        x: 84
-        y: 5
-        width: 20
-        height: 45
+        x: 106
+        y: 8
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c373e46bdce776340800000000000000
-      internalID: 4856990145134343996
+      spriteID: 1bdde4c58588e2410800000000000000
+      internalID: 1454249642774420913
       vertices: []
       indices: 
       edges: []
